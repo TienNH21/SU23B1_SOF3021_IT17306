@@ -10,6 +10,7 @@
     <div>
         <label>Mã</label>
         <sf:input path="ma" />
+        <sf:errors path="ma" />
     </div>
     <div>
         <label>Tên</label>

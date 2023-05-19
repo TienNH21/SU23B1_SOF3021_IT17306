@@ -1,17 +1,32 @@
 package fplhn.tiennh21.sd17306.request;
 
+import jakarta.validation.constraints.NotBlank;
+import org.hibernate.validator.constraints.Length;
+
 import java.util.UUID;
 
 public class CuaHangVM {
-    private UUID id;
+    @NotBlank(message = "Không được để trống")
+    @Length(max = 255, message = "Không vượt quá 255 kí tự")
     private String ma;
+
+    @NotBlank
+    @Length(max = 255)
     private String ten;
+
+    @NotBlank
+    @Length(max = 255)
     private String diaChi;
+
+    @NotBlank
+    @Length(max = 255)
     private String thanhPho;
+
+    @NotBlank
+    @Length(max = 255)
     private String quocGia;
 
-    public CuaHangVM(UUID id, String ma, String ten, String diaChi, String thanhPho, String quocGia) {
-        this.id = id;
+    public CuaHangVM(String ma, String ten, String diaChi, String thanhPho, String quocGia) {
         this.ma = ma;
         this.ten = ten;
         this.diaChi = diaChi;
@@ -20,14 +35,6 @@ public class CuaHangVM {
     }
 
     public CuaHangVM() {
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
     }
 
     public String getMa() {
