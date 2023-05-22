@@ -2,6 +2,7 @@ package fplhn.tiennh21.sd17306.request;
 
 import jakarta.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 
