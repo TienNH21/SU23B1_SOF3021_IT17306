@@ -1,5 +1,7 @@
 package fplhn.tiennh21.sd17306.controllers.admin;
 
+import fplhn.tiennh21.sd17306.entities.CuaHang;
+import fplhn.tiennh21.sd17306.repositories.CuaHangRepository;
 import fplhn.tiennh21.sd17306.request.CuaHangVM;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,9 @@ public class CuaHangController {
     @Qualifier("cuaHangVM1")
     private CuaHangVM vm;
 
+    @Autowired
+    private CuaHangRepository cuaHangRepo;
+
     @GetMapping("create")
     public String create(Model model)
     {
@@ -36,7 +41,13 @@ public class CuaHangController {
             System.out.println(vm.getTen());
             return "admin/cua_hang/create";
         } else {
-            // Thành công
+            CuaHang ch = new CuaHang();
+            ch.setTen(vm.getTen());
+            ch.setMa(vm.getMa());
+            ch.setDiaChi(vm.getDiaChi());
+            ch.setThanhPho(vm.getThanhPho());
+            ch.setQuocGia(vm.getQuocGia());
+            this.cuaHangRepo.save(ch);
         }
         return "admin/cua_hang/create";
     }
