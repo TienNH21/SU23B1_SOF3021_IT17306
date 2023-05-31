@@ -1,5 +1,6 @@
 package fplhn.tiennh21.sd17306.request;
 
+import fplhn.tiennh21.sd17306.entities.CuaHang;
 import jakarta.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Component;
@@ -76,5 +77,14 @@ public class CuaHangVM {
 
     public void setQuocGia(String quocGia) {
         this.quocGia = quocGia;
+    }
+
+    public void loadFromDomain(CuaHang domainModel)
+    {
+        this.setTen(domainModel.getTen());
+        this.setMa(domainModel.getMa());
+        this.setDiaChi(domainModel.getDiaChi());
+        this.setThanhPho(domainModel.getThanhPho());
+        this.setQuocGia(domainModel.getQuocGia());
     }
 }

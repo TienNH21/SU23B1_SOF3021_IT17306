@@ -1,22 +1,23 @@
 package fplhn.tiennh21.sd17306.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.validation.constraints.NotBlank;
+import fplhn.tiennh21.sd17306.request.CuaHangVM;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Length;
+
+import java.util.UUID;
 
 @Entity
+@Table(name = "CuaHang")
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
 public class CuaHang {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name="Id")
-    private String id;
+    private UUID id;
 
     @Column(name="Ma")
     private String ma;
@@ -33,4 +34,12 @@ public class CuaHang {
     @Column(name="QuocGia")
     private String quocGia;
 
+    public void loadFromVM(CuaHangVM vm)
+    {
+        this.setTen( vm.getTen() );
+        this.setMa( vm.getMa() );
+        this.setThanhPho( vm.getThanhPho() );
+        this.setDiaChi( vm.getDiaChi() );
+        this.setQuocGia( vm.getQuocGia() );
+    }
 }
